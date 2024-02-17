@@ -177,7 +177,7 @@
       $$
     
     We know that Tr\((\mathbf{J})=0\), det\((\mathbf{J})>0 \), and the eigenvalues are complex numbers. This tells us that the two 
-    fixed points are both centers in a conservative field. This means that our fixed points are \(\textit{nonlinear centers} \). To
+    fixed points are both centers in a conservative field. This means that our fixed points are nonlinear centers. To
     visualize/verify our results, we will proceed with a numerical analysis in MATLAB.
 
   </p>
@@ -185,10 +185,47 @@
 <p style="margin-top: 0; font-size: large;text-align: center;">
  Figure 1: Vector field of the glider's velocity
 </p>
+
+<p style="text-indent:30px; font-size: large;">
+  In Figure 1, I have plotted the vector field of the non-dimensionalized system. As we can see
+  there are two nonlinear centers at \((x_c,\theta_c) = (\pm 1, 0) \). Note that these centers are 
+  repeated for \( \theta=2\pi n\); however, we will only focus on the bounded case: \( x\in(-2,2)\), and \(\theta\in(-\pi,\pi)\).
+  Our next focus is to analyze flight trajectories. Since we have discovered two nonlinear centers, I will check
+  if there are closed trajectories near these fixed points. Another way to think about closed trajectories is to analyze the 
+  potential map of our system.
+</p>
+
+
+
 <img style="width: 100%;"; src="EnergyPotentialMap.jpg">
 <p style="margin-top: 0; font-size: large;text-align: center;">
   Figure 2: Energy surface plot
  </p>
+
+ <p style="text-indent:30px; font-size: large;">
+  In Figure 2, I have created a mesh surface plot of the energy function in MATLAB. The height of 
+  this function at each point in space represents the kinetic energy of the glider. In order to find the 
+  "turning points" of this energy map, we need to find where the zero set intersects the energy function i.e. (\(E=0\)).
+</p>
+
+$$
+E(v,\theta) = 0 \Rightarrow x(x^2-3\cos\theta)=0
+$$
+
+$$
+\boxed{
+  \begin{cases}
+  x=0\\
+  \theta=\pm \arccos\Big(\frac{x^2}{3}\Big)
+  \end{cases}
+}
+$$
+<p style="text-indent:30px; font-size: large;">
+  As we can see, there are two conditions that satisfy the intersection of the zero set and the energy function.
+  In Figure 2, these curves are represented in red. Note that there are two wells near our fixed points in which
+  the glider cannot escape the region.
+</p>
+<img style="width: 100%;"; src="GliderVelocityFieldTrajectories.jpg">
 
 
   
