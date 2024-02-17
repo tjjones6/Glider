@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Glider</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body style="margin-left: 10%;margin-right: 10%;">
+  <header style="background-color: black;color: white;text-align: center;font-size: 150%;">Math 415 Applied Dynamical Systems: Glider</header>
+  <!--<p>Math can be inline like \(2^{2x}=4\), or displayed like:</p>
+  \[2^{3x}=8\]-->
+  <p style="text-indent:30px; font-size: large;">
+    Consider a glider flying at speed \(v(t)\) at an angle \(\theta(t) \) to the horizontal. Its motion is
+    governed by:
+    $$
+    \begin{cases}
+      m\dot{v}=-mg\sin(\theta)-\frac{1}{2}\rho C_D Sv^2,\\
+      mv\dot{\theta}=-mg\cos(\theta)+\frac{1}{2}\rho C_L Sv^2,
+    \end{cases}
+    $$
+    for the glider mass m, wing surface area S, gravitational acceleration g, air density ρ,
+    drag coefficient \(C_D\), and lift coefficient \(C_L\).
+  </p>
+
+  <p style="text-indent:30px; font-size: large;">
+    First, let's non-dimensionalize the governing equations to analyze the fundamental dynamics
+     of the system without being overly influenced by specific values for mass, surface area, 
+     gravitational acceleration, and air density. 
+     
+     $$
+     \begin{cases}
+     \frac{v}{x^*}=x \Rightarrow dv=x^*dx \\
+     \frac{t}{\tau}=t^* \Rightarrow dt=t^*d\tau 
+     \end{cases}
+     $$
+     Note that v is the dimensional speed, x is the dimensionless speed, \(x^*\) is the characteristic speed.
+     Similarly, t is dimensional time, \(\tau\) is the dimensionless time, and \(t^*\) is the dimensionless time.
+     Now let's rewrite our original (dimensional) equations of motion.
+
+     $$
+    m\frac{x^*}{t^*}\frac{dx}{d\tau} = -mg\sin(\theta)-\frac{1}{2}\rho C_D S(xx^*)^2
+     $$
+
+     $$
+      \Rightarrow \frac{dx}{d\tau} = -\frac{t^*}{x^*}g\sin(\theta)-\frac{t^*}{2m}\rho C_D S x^2 x^* \tag{I}
+     $$
+
+
+     $$
+    mxx^*t^*\frac{d\theta}{d\tau} = -mg\cos(\theta)+\frac{1}{2}\rho C_L S(xx^*)^2
+     $$
+
+     $$
+      \Rightarrow x\frac{d\theta}{d\tau} = -\frac{g}{x^*t^*}\cos(\theta)+\frac{\rho C_L S}{2mt^*}x^2x^* \tag{II}
+     $$
+
+
+     
+  </p>
+
+
+
+  
+</body>
+
+</html>
