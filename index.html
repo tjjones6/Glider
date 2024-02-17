@@ -13,6 +13,9 @@
   <header style="background-color: black;color: white;text-align: center;font-size: 150%;">Math 415 Applied Dynamical Systems: Glider</header>
   <!--<p>Math can be inline like \(2^{2x}=4\), or displayed like:</p>
   \[2^{3x}=8\]-->
+  <p style="font-size: small; text-align: right;">
+    Tyler Jones
+  </p>
   <p style="text-indent:30px; font-size: large;">
     Consider a glider flying at speed \(v(t)\) at an angle \(\theta(t) \) to the horizontal. Its motion is
     governed by:
@@ -108,7 +111,32 @@
       =-3\sin\theta(x^2-\cos\theta)+3\sin\theta(x^2-\cos\theta)=0
       $$
       $$\boxed{\frac{dE}{d\tau}=0}$$
+      Since we have shown that our system is not dissipative (conserved), we 
+      can continue with our bifurcation analysis. First, we will need to find and classify 
+      all fixed points.
+
+      $$
+      \begin{cases}
+        \dot{x}=-\sin\theta\\
+        \dot{\theta}=-\frac{\cos\theta}{x}+x
+      \end{cases}
+      \Rightarrow
+      \begin{cases}
+        \sin\theta=0\\
+        \cos\theta=x^2
+      \end{cases}
+      \Rightarrow
+      \begin{cases}
+        \theta^*=2\pi n,n\in \mathbb{R}\\
+        x^*=\pm 1
+      \end{cases}
+      $$
+
+      $$
+      \boxed{(x_c,\theta_c)=(\pm 1,2\pi n)}
+      $$
   </p>
+
 
 
 
