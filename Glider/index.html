@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Glider</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body style="margin-left: 10%;margin-right: 10%;">
+  <header style="background-color: black;color: white;text-align: center;font-size: 150%;">Math 415 Applied Dynamical Systems: Glider</header>
+  <!--<p>Math can be inline like \(2^{2x}=4\), or displayed like:</p>
+  \[2^{3x}=8\]-->
+  <p style="font-size: small; text-align: center;margin-bottom: 0;">
+    Tyler Jones
+  </p>
+  <p style="font-size: small; text-align: center;margin: 0;">
+    University of Wisconsin-Madison
+  </p>
+  
+  <p style="text-indent:30px; font-size: large;">
+    Consider a glider flying at speed \(v(t)\) at an angle \(\theta(t) \) to the horizontal. Its motion is
+    governed by:
+    $$
+ 
+      m\dot{v}=-mg\sin(\theta)-\frac{1}{2}\rho C_D Sv^2,\tag{I}$$
+
+      $$
+      mv\dot{\theta}=-mg\cos(\theta)+\frac{1}{2}\rho C_L Sv^2,\tag{II}
+
+    $$
+    for the glider mass m, wing surface area S, gravitational acceleration g, air density ρ,
+    drag coefficient \(C_D\), and lift coefficient \(C_L\).
+  </p>
+
+  <p style="text-indent:30px; font-size: large;">
+    First, let's non-dimensionalize the governing equations to analyze the fundamental dynamics
+     of the system without being overly influenced by specific values for mass, surface area, 
+     gravitational acceleration, and air density. 
+     
+     $$
+     \begin{cases}
+     \frac{v}{x^*}=x \Rightarrow dv=x^*dx \\
+     \frac{t}{\tau}=t^* \Rightarrow dt=t^*d\tau 
+     \end{cases}
+     $$
+     Note that v is the dimensional speed, x is the dimensionless speed, \(x^*\) is the characteristic speed.
+     Similarly, t is dimensional time, \(\tau\) is the dimensionless time, and \(t^*\) is the dimensionless time.
+     Now let's rewrite our original (dimensional) equations of motion.
+
+     $$
+    m\frac{x^*}{t^*}\frac{dx}{d\tau} = -mg\sin(\theta)-\frac{1}{2}\rho C_D S(xx^*)^2
+     $$
+
+     $$
+      \Rightarrow \frac{dx}{d\tau} = -\frac{t^*}{x^*}g\sin(\theta)-\frac{t^*}{2m}\rho C_D S x^2 x^* \tag{III}
+     $$
+
+
+     $$
+    mxx^*t^*\frac{d\theta}{d\tau} = -mg\cos(\theta)+\frac{1}{2}\rho C_L S(xx^*)^2
+     $$
+
+     $$
+      \Rightarrow x\frac{d\theta}{d\tau} = -\frac{g}{x^*t^*}\cos(\theta)+\frac{\rho C_L S}{2mt^*}x^2x^* \tag{IV}
+     $$
+
+     Now that we have non-dimensionalized the original equations of motion (I-II),
+     we will verify that our new set of equations (III-IV) are consistent with the original equations. This will be accomplished
+     by comparing each term as follows for equations (I-III):
+    $$
+      D\equiv \frac{C_D}{C_L}
+    $$
+    $$
+      -\frac{t^*}{x^*}g\sin(\theta) - \frac{t^*}{2m}\rho C_DSx^2x^*=-\sin(\theta)-\frac{C_D}{C_L}x^2
+    $$
+    $$
+    \Rightarrow
+      \begin{cases}
+        -\frac{t^*}{x^*}g\sin(\theta)=-\sin(\theta)\\
+        - \frac{t^*}{2m}\rho C_DSx^2x^*=-\frac{C_D}{C_L}x^2
+      \end{cases}
+      \Rightarrow
+      \begin{cases}
+        x^*=\sqrt{\frac{2mg}{\rho SC_L}}\\
+        t^* = \frac{x^*}{g}
+      \end{cases}
+    $$
+    $$
+    \boxed{
+      \begin{cases}
+        \frac{dx}{d\tau}=-\sin(\theta)-Dx^2\\
+        x\frac{d\theta}{d\tau}=-\cos(\theta)+x^2
+      \end{cases}
+    
+    }
+    $$
+  </p>
+
+  <p style="text-indent:30px; font-size: large;">
+    Now that we have our system in a dimenionless form for dimensionless \(\tau\),
+    dimensionless speed \( x(\tau)\), and drag ratio D, let's analyze the system with the 
+    case of negligible drag (\(D=0\)). Since we are neglecting drag, let's show that \( 
+      E(x,\theta)=x^3-3x\cos(\theta)\) is a conserved quantity. To do so, we will ensure that 
+      the system is not dissipative by calculating the time rate of change of the energy.
+      $$
+      \frac{dE}{d\tau}=3x^2\frac{dx}{d\tau}-3\Big(\frac{dx}{d\tau}\cos\theta-x\sin\theta\frac{d\theta}{d\tau}\Big)
+      $$
+      $$
+      =3\frac{dx}{d\tau}(x^2-\cos\theta)+3x\sin\theta\frac{d\theta}{d\tau}
+      $$
+      $$
+      =-3\sin\theta(x^2-\cos\theta)+3\sin\theta(x^2-\cos\theta)=0
+      $$
+      $$\boxed{\frac{dE}{d\tau}=0}$$
+      Since we have shown that our system is not dissipative (conserved), we 
+      can continue with our bifurcation analysis. First, we will need to find and classify 
+      all fixed points.
+
+      $$
+      \begin{cases}
+        \dot{x}=-\sin\theta\\
+        \dot{\theta}=-\frac{\cos\theta}{x}+x
+      \end{cases}
+      \Rightarrow
+      \begin{cases}
+        \sin\theta=0\\
+        \cos\theta=x^2
+      \end{cases}
+      \Rightarrow
+      \begin{cases}
+        \theta^*=2\pi n,n\in \mathbb{R}\\
+        x^*=\pm 1
+      \end{cases}
+      $$
+
+      $$
+      \boxed{(x_c,\theta_c)=(\pm 1,2\pi n)}
+      $$
+      Now to classify these equilibria, we compute the Jacobian evaluated
+      at each of the critical points. Then we will calculate the eigenvalues to help classify the fixed points.
+      $$ \mathbf{J}\equiv
+      \begin{bmatrix}
+    \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+    \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \cdots & \frac{\partial f_2}{\partial x_n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \frac{\partial f_m}{\partial x_1} & \frac{\partial f_m}{\partial x_2} & \cdots & \frac{\partial f_m}{\partial x_n}
+    \end{bmatrix}
+    \Rightarrow
+
+    \mathbf{J}=
+      \begin{bmatrix}
+    \frac{\partial \dot{x}}{\partial x} & \frac{\partial \dot{x}}{\partial \theta} \\
+    \frac{\partial \dot{\theta}}{\partial x} & \frac{\partial \dot{\theta}}{\partial \theta} \\
+    
+    \end{bmatrix}
+
+
+    =\begin{bmatrix}
+    0 & -\cos\theta \\
+    1+\frac{1}{x^2}\cos\theta & -\frac{1}{x}\sin\theta \\
+    
+    \end{bmatrix}
+    \Bigg|_{(\pm 1,2\pi n)}
+      $$
+
+      $$
+      \mathbf{J}=
+      \begin{bmatrix}
+    0 & -1 \\
+    2 & 0 \\
+    
+    \end{bmatrix}
+    \Rightarrow \det(\mathbf{J}-\lambda \mathbf{I}) \Rightarrow\lambda^2=-2
+      $$
+    
+    We know that Tr\((\mathbf{J})=0\), det\((\mathbf{J})>0 \), and the eigenvalues are complex numbers. This tells us that the two 
+    fixed points are both centers in a conservative field. This means that our fixed points are \(\textit{nonlinear centers} \). To
+    visualize/verify our results, we will proceed with a numerical analysis in MATLAB.
+
+  </p>
+<img style="width: 100%;"; src="GliderVelocityField.jpg">
+<p style="margin-top: 0; font-size: large;text-align: center;">
+ Figure 1: Vector field of the glider's velocity
+</p>
+<img style="width: 100%;"; src="EnergyPotentialMap.jpg">
+<p style="margin-top: 0; font-size: large;text-align: center;">
+  Figure 2: Energy surface plot
+ </p>
+
+
+  
+</body>
+
+</html>
